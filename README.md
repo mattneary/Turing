@@ -1,7 +1,27 @@
 Turing
 ======
-Turing is a Turing Machine simulator written in Ruby. A `TuringMachine` instance is instantiated with a rule-set, an array of `Rule` instances, and an initial tape state, an array of bits.
+Turing is a Turing Machine simulator written in Ruby. A Turing Machine consists of the following.
+
+1. A **tape** divided into cells, each cell containing a symbol, extensible to arbitrary size.
+2. A **head** that can read and write symbols on the tape and move along the tape.
+3. A **state register** which stores the state of the machine. A state is one of a finite array of states, with a distinct initial state value of 'A' and a special halting state value of 'H'.
+4. An **action table** mapping a current state and current symbol to a new symbol, new state, and movement either left or right.
+
+Usage
+-----
+The action table of a Turing Machine is provided in a `.turing` file the format defined as *action table* in the following.
+
+	<state> ::= A | B | ...
+	<symbol> ::= 0 | 1
+	<direction> ::= R | L
+	<rule> ::= <state> <symbol> <symbol> <direction> <state>
+	
+	<tape> ::= <symbol> | <tape> <symbol>
+	<ruleset> ::= <rule> | <ruleset> <rule>
+	<action table> ::= <tape> <ruleset>
+
+You should note that the second *symbol* and *state* in a rule are the new values each register takes. The first line is dedicated to an initial tape value.
 
 Purpose
 -------
-Turing will continue to be built out as a tool for working with Turing Machines and most likely joined with a generic Automata project. The goal is to provide the implementation, fully modularized, to allow for a `.turing` file, for example, to be provided as the source code to an experiment. Dealing with Turing Machines is a great way to understand computers on a fundamental level, an effort which this project aims to facilitate.
+Turing will continue to be built out as a tool for working with Turing Machines and most likely joined with a generic Automata project. Dealing with Turing Machines is a great way to understand computers on a fundamental level, an effort which this project aims to facilitate.
