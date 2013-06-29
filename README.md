@@ -14,11 +14,11 @@ The action table of a Turing Machine is provided in a `.turing` file the format 
 	<state> ::= A | B | ...
 	<symbol> ::= 0 | 1
 	<direction> ::= R | L
-	<rule> ::= <state> <symbol> <symbol> <direction> <state>
+	<rule> ::= <state> " " <symbol> " " <symbol> " " <direction> " " <state>
 	
-	<tape> ::= <symbol> | <tape> <symbol>
-	<ruleset> ::= <rule> | <ruleset> <rule>
-	<action table> ::= <tape> <ruleset>
+	<tape> ::= <symbol> | <tape> " " <symbol>
+	<ruleset> ::= <rule> | <ruleset> <EOL> <rule>
+	<action table> ::= <tape> <EOL> <ruleset>
 
 You should note that the second *symbol* and *state* in a rule are the new values each register takes. The first line is dedicated to an initial tape value.
 
