@@ -9,7 +9,7 @@ Turing is a Turing Machine simulator written in Ruby. A Turing Machine consists 
 
 Usage
 -----
-The action table of a Turing Machine is provided in a `.turing` file the format defined as *action table* in the following (n.b., [Backus-Naur Form](https://en.wikipedia.org/wiki/Backus–Naur_Form) is used).
+The action table of a Turing Machine is provided in a `.turing` file; the format is defined as *action table* in the following (n.b., [Backus-Naur Form](https://en.wikipedia.org/wiki/Backus–Naur_Form) is used).
 
 	<action table> ::= <tape> <EOL> <ruleset>
 	<ruleset> ::= <rule> | <ruleset> <EOL> <rule>
@@ -22,6 +22,12 @@ The action table of a Turing Machine is provided in a `.turing` file the format 
 	<wildcard> ::= _	
 
 You should note that the second *symbol* and *state* in a rule are the new values each register takes. The first line is dedicated to an initial tape value, and an underscore is used as a wildcard.
+
+Once a valid `.turing` file has been made, pass the filename as an argument to __turing.rb__. As an example, you could do the following.
+
+```bash
+ruby turing.rb bit_add.turing
+```
 
 Purpose
 -------
