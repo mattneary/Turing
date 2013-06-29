@@ -16,11 +16,12 @@ The action table of a Turing Machine is provided in a `.turing` file the format 
 	<tape> ::= <symbol> | <tape> " " <symbol>	
 	
 	<rule> ::= <state> " " <symbol> " " <symbol> " " <direction> " " <state>
-	<state> ::= A | B | ...
-	<symbol> ::= 0 | 1
-	<direction> ::= R | L			
+	<state> ::= A | B | ... | <wildcard>
+	<symbol> ::= 0 | 1 | <wildcard>
+	<direction> ::= R | L		
+	<wildcard> ::= _	
 
-You should note that the second *symbol* and *state* in a rule are the new values each register takes. The first line is dedicated to an initial tape value. 
+You should note that the second *symbol* and *state* in a rule are the new values each register takes. The first line is dedicated to an initial tape value, and an underscore is used as a wildcard.
 
 Purpose
 -------

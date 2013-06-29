@@ -16,21 +16,13 @@ class ActionTable
 		file = File.new(file, "r")
 
 		tape = file.gets
-		@tape = tape.split(/\s/).map { |value|
-			Integer value
-		}
-
+		@tape = tape.split(/\s/)
 		while (line = file.gets)
 			parts = line.split /\s/
 			if parts.length > 5
 				raise "Invalid rule input."
 			else
-				@rules.push Rule.new(
-					parts[0], 
-					Integer(parts[1]), 
-					Integer(parts[2]), 
-					parts[3], 
-					parts[4])
+				@rules.push Rule.new(*parts)
 			end
 		end
 		file.close
@@ -38,9 +30,12 @@ class ActionTable
 end
 class TuringMachine
 	attr_accessor :rules, :tape, :index, :state
+	def char_match(a, b)
+		a == '_' or a == b
+	end
 	def iterate
 		rule = @rules.select { |rule|
-			rule.state == @state and rule.symbol == @tape[@index]
+			char_match(rule.state, @state) and char_match(rule.symbol, @tape[@index])
 		}.first
 		@tape[@index] = rule.new_symbol
 		@index += rule.direction == 'R' ? 1 : -1
@@ -57,6 +52,11 @@ class TuringMachine
 		@state = 'A'
 		@index = 0
 	end
+	def print
+		p @tape.map { |x|
+			Integer x
+		}
+	end
 end
 
 if ARGV.length > 0
@@ -66,4 +66,4 @@ else
 end
 
 ruleset = ActionTable.new(filename)
-p TuringMachine.new(ruleset.rules, ruleset.tape).iterate.tape
+TuringMachine.new(ruleset.rules, ruleset.tape).iterate.print

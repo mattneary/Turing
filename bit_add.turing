@@ -5,7 +5,5 @@ Z 0 0 R H
 Z 1 1 L N
 C 0 1 L N
 C 1 0 L Y
-N 1 0 R H
-Y 0 1 R H
-N 0 0 R H
-Y 1 1 R H
+N _ 0 R H
+Y _ 1 R H
