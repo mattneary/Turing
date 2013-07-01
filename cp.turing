@@ -1,0 +1,13 @@
+0 0 1 1 0 0 0 0 0
+A 0 0 R B
+B 0 0 R s1
+s1 0 0 N H
+s1 1 0 R s2
+s2 0 0 R s3
+s2 1 1 R s2
+s3 0 1 L s4
+s3 1 1 R s3
+s4 0 0 L s5
+s4 1 1 L s4
+s5 0 1 R s1
+s5 1 1 L s5

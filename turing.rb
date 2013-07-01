@@ -38,7 +38,7 @@ class TuringMachine
 			char_match(rule.state, @state) and char_match(rule.symbol, @tape[@index])
 		}.first
 		@tape[@index] = rule.new_symbol
-		@index += rule.direction == 'R' ? 1 : -1
+		@index += rule.direction == 'R' ? 1 : (rule.direction == 'L' ? -1 : 0)
 		@state = rule.new_state
 		if @state != 'H'
 			self.iterate
